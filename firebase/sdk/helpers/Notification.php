@@ -6,7 +6,7 @@
  * Time: 17:42
  */
 
-namespace jakekutsel\firebase\sdk\helpers;
+namespace firebase\sdk\helpers;
 
 
 class Notification

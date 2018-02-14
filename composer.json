@@ -1,7 +1,6 @@
 {
     "name": "jakekutsel/firebase-notification",
     "description": "Firebase SDK for internal invento firebase service",
-    "license": "MIT",
     "authors": [
         {
             "name": "Evgeniy Kutel",
@@ -9,9 +8,12 @@
         }
     ],
     "require": {
-        "php": ">=5.5.0"
+        "php": ">=5.5.0",
+        "guzzlehttp/guzzle": ">=4"
     },
     "autoload": {
-        "classmap": ["firebase/"]
+        "autoload": {
+            "classmap": ["firebase/"]
+        }
     }
 }

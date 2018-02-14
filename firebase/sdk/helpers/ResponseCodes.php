@@ -6,7 +6,7 @@
  * Time: 17:56
  */
 
-namespace firebase_sdk\helpers;
+namespace firebase\sdk\helpers;
 
 
 class ResponseCodes

@@ -7,9 +7,9 @@
  */
 
 
-namespace jakekutsel\firebase\sdk;
+namespace firebase\sdk\helpers;
 
-use firebase_sdk\helpers\Notification;
+use firebase\sdk\helpers\Notification;
 use GuzzleHttp;
 
 class FireBaseSdk
