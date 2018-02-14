@@ -12,8 +12,6 @@
         "guzzlehttp/guzzle": ">=4"
     },
     "autoload": {
-        "autoload": {
-            "classmap": ["firebase/"]
-        }
+        "classmap": ["firebase/"]
     }
 }
