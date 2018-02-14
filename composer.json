@@ -1,0 +1,17 @@
+{
+    "name": "jakekutsel/firebase-notification",
+    "description": "Firebase SDK for internal invento firebase service",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Evgeniy Kutel",
+            "email": "e.kutel@invento.by"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "autoload": {
+        "classmap": ["firebase/"]
+    }
+}
