@@ -9,6 +9,8 @@
 namespace firebase\sdk\helpers;
 
 
+use Prophecy\Exception\InvalidArgumentException;
+
 class Notification
 {
     private $title;
@@ -16,6 +18,8 @@ class Notification
     private $icon;
     private $click_action;
     private $topic;
+
+    const TOPIC_PREFIX = "/topics/";
 
 
     function __construct($title, $body, $icon, $click_action, $topic)
@@ -49,6 +53,8 @@ class Notification
      */
     public function setIcon($icon)
     {
+        if (substr( $icon, 0, 5 ) != "https")
+            throw new InvalidArgumentException("Icon must be start https");
         $this->icon = $icon;
         return $this;
     }
@@ -74,6 +80,8 @@ class Notification
      */
     public function setTopic($topic)
     {
+
+        if (substr( $topic, 0, 9 ) != "/topics/") $topic=self::TOPIC_PREFIX.$topic;
         $this->topic = $topic;
         return $this;
     }

@@ -8,6 +8,7 @@
 
 
 namespace firebase\sdk\helpers;
+
 use GuzzleHttp;
 
 class FireBaseSdk
@@ -19,7 +20,8 @@ class FireBaseSdk
 
     function __construct(Notification $notification, $service_host)
     {
-        $this->setNotificationObj($notification->jsonSerialize())->setServiceHost($service_host)->setClient();
+        if ($notification instanceof Notification) $this->setNotificationObj($notification->jsonSerialize())->setServiceHost($service_host)->setClient();
+        else  throw new \InvalidArgumentException("Notification must be notification object");
     }
 
     /**
@@ -28,18 +30,19 @@ class FireBaseSdk
      */
     public function setNotificationObj($notification_obj)
     {
+
         $this->notification_obj = $notification_obj;
         return $this;
+
     }
 
     public function notification()
     {
-        $this->send();
+        return $this->send();
     }
 
-    private function send()
+    public function send()
     {
-
         return $this->client->request(
             self::METHOD,
             $this->service_host,
