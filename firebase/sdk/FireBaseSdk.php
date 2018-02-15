@@ -16,11 +16,14 @@ class FireBaseSdk
     private $notification_obj;
     private $service_host;
     private $client;
-    const METHOD = 'POST';
+    private $credentials;
 
-    function __construct(Notification $notification, $service_host)
+    const METHOD = 'POST';
+    const AUTH_PREFIX = 'Bearer ';
+
+    function __construct(Notification $notification, $service_host, $credentials)
     {
-        if ($notification instanceof Notification) $this->setNotificationObj($notification->jsonSerialize())->setServiceHost($service_host)->setClient();
+        if ($notification instanceof Notification) $this->setNotificationObj($notification->jsonSerialize())->setServiceHost($service_host)->setClient()->setCredentials($credentials);
         else  throw new \InvalidArgumentException("Notification must be notification object");
     }
 
@@ -47,7 +50,10 @@ class FireBaseSdk
             self::METHOD,
             $this->service_host,
             [
-                'json' => $this->notification_obj
+                'json' => $this->notification_obj,
+                'headers' => [
+                    'Authorization' => self::AUTH_PREFIX . $this->credentials,
+                ],
             ]
         );
     }
@@ -68,6 +74,16 @@ class FireBaseSdk
     public function setServiceHost($service_host)
     {
         $this->service_host = $service_host;
+        return $this;
+    }
+
+    /**
+     * @param mixed $credentials
+     * @return FireBaseSdk
+     */
+    public function setCredentials($credentials)
+    {
+        $this->credentials = $credentials;
         return $this;
     }
 }
