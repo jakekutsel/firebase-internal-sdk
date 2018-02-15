@@ -1,6 +1,8 @@
 {
     "name": "jakekutsel/firebase-notification",
     "description": "Firebase SDK for internal invento firebase service",
+    "version": "0.1.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "Evgeniy Kutel",

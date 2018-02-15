@@ -8,8 +8,6 @@
 
 
 namespace firebase\sdk\helpers;
-
-use firebase\sdk\helpers\Notification;
 use GuzzleHttp;
 
 class FireBaseSdk
